@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+  {% if object.img  %}
+    <img src="{{ object.img.url }}" alt="photo" width="300" height="200" >
+
+    {% endif %}
+
+
+    <h1 class="capital">{{ object.Product_name }}</h1>
+    <img src="{{ object.img }}" alt="">
+    <h2>{{ object.price }}</h2>
+    <h2 class="sub">{{ object.subtitle }}</h2>
+    <h2>{{ object.desc | safe }}</h2>
+    <h2>{{ object.date }}</h2>
+    <h2>{{ object.author }}</h2>
+
+    <div class="card">
+                <div class="card-header">Comments</div>
+                {%  for comment in products.comments.all %}
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{ comment }}</p>
+                            <footer class="blockquote-footer">{{ comment.user_id }}</footer>
+                        </blockquote>
+                    </div>
+                {% endfor %}
+            </div>
+{% if user == object.author %}
+
+<a href="{% url 'updatepro' object.pk %}" class="btn btn-info"> Update Product |</a> <a href="{% url 'deletepro' object.pk %}" class="btn btn-danger"> Delete Product</a>
+
+{% endif %}
+<a href="{% url 'products_list' %}"class="btn btn-success " > Back</a>
+
+
+
+
+
+
+{% endblock content %}

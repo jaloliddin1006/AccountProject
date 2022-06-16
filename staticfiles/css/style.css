@@ -1,0 +1,15 @@
+.capital{
+    text-transform: uppercase;
+}
+.sub{
+    text-transform: capitalize;
+}
+
+.header{
+    text-align: center;
+}
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}

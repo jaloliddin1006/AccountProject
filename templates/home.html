@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {{ user.username }}!!!
+        <p><a href="{% url 'logout' %}" class="btn btn-danger">Chiqib ketish</a></p>
+    {% else %}
+        <p>Saytga kirmagansiz</p>
+        <a href="{% url 'login' %}" class="btn btn-secondary">Kirish</a>
+        <a href="{% url 'signup' %}"class="btn btn-secondary">Ro'yxatdan o'tish</a>
+    {% endif %}
+
+<a href="{% url 'products_list' %}" class="btn btn-success">Mahsulatlar</a>
+
+{% endblock content %}
